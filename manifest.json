@@ -1,0 +1,55 @@
+{
+    "name": "Prometheus Browser",
+    "version": "1.0",
+    "description": "Explore Prometheus endpoints",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "background": {
+        "scripts": [
+            "export-shim.js",
+            "node_modules/underscore/underscore.js",
+            "node_modules/uts/uts.js",
+            "node_modules/jquery/dist/jquery.min.js",
+            "parse-prometheus-text-format/dist/parse-prometheus-text-format.umd.js",
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
+        }
+      },
+    "icons": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    },
+    "options_page": "options.html",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+          "matches": [
+            "http://*/*",
+            "https://*/*"
+          ],
+          "css": [
+             "jstree/dist/themes/default/style.min.css"
+          ],
+          "js": [
+            "node_modules/moment/min/moment.min.js",
+            "node_modules/chartjs-adapter-moment/dist/chartjs-adapter-moment.min.js",
+            "node_modules/chart.js/dist/Chart.js",
+            "node_modules/jquery/dist/jquery.min.js",
+            "jstree/dist/jstree.min.js",
+            "node_modules/jstreegrid/jstreegrid.js",
+            "content.js"
+          ],
+          "run_at": "document_start"
+        }
+      ]
+}
